@@ -1,4 +1,3 @@
-// Form an array of 25 questions having objects as elements
 const question_bank = [
 {   question: "Who has the most centuries in international cricket?",
     options: ["Sachin Tendulkar", "Virat Kohli", "Ricky Ponting", "Jacques Kallis"],
@@ -137,34 +136,67 @@ function getRandomQuestions() {
 
 const selectedQuestions = getRandomQuestions();
 
+
+function lockQuiz() {
+    const inputs = document.querySelectorAll("#quizForm input[type='radio']");
+    inputs.forEach(input => input.disabled = true);
+
+    const submitBtn = document.querySelector("#quizForm button[type='submit']");
+    if (submitBtn) submitBtn.disabled = true;
+}
+
 selectedQuestions.forEach((q, index) => {
     const questionDiv = document.createElement("div");
     questionDiv.className = "question";
 
     const questionHeader = document.createElement("h3");
     questionHeader.textContent = `${index + 1}. ${q.question}`;
-
     questionDiv.appendChild(questionHeader);
 
     q.options.forEach(opt => {
         const label = document.createElement("label");
-        label.innerHTML = `<input type="radio" name="q${index}" value="${opt}"> ${opt}`;
+        label.style.display = "block";
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `${index}`;
+        input.value = opt;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(" " + opt));
         questionDiv.appendChild(label);
     });
 
-    document.getElementById("quizForm").insertBefore(questionDiv, quizForm.lastElementChild);
+    const quizForm = document.getElementById("quizForm");
+    quizForm.insertBefore(questionDiv, quizForm.lastElementChild);
 });
+
+
+let timeLeft = 20;
+const timerElement = document.getElementById("timer");
+
+const timerInterval = setInterval(() => {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        alert("Time's up! Submitting your quiz.");
+        document.getElementById("quizForm").requestSubmit();
+        lockQuiz();
+    }
+    timeLeft--;
+}, 1000);
+
+
 
 document.getElementById("quizForm").addEventListener("submit", (event) => {
     event.preventDefault();
     let score = 0;
 
-    
-    const formData = new FormData(document.getElementById("quizForm"));
+    const formData = new FormData(event.target);
 
     for (let [name, userAnswer] of formData.entries()) {
-        // name is like "q0", "q1", ...
-        const questionIndex = parseInt(name.replace("q", ""));
+        const questionIndex = parseInt(name);
         const correctAnswer = selectedQuestions[questionIndex].answer;
         if (userAnswer === correctAnswer) {
             score++;
@@ -172,13 +204,12 @@ document.getElementById("quizForm").addEventListener("submit", (event) => {
     }
 
     const result = document.getElementById("result");
-    result.innerHTML = `You scored ${score} out of 5! 🎯`;
+    result.textContent = `You scored ${score} out of ${selectedQuestions.length}! 🎯`;
 
-    if (score >= 4) {
-        result.style.color = "green";
-    } else if (score >= 2) {
-        result.style.color = "#f39c12";
-    } else {
-        result.style.color = "red";
-    }
+    if (score >= 4) result.style.color = "green";
+    else if (score >= 2) result.style.color = "#f39c12";
+    else result.style.color = "red";
+
+    clearInterval(timerInterval);
+    lockQuiz();
 });
