@@ -1,2 +1,17 @@
-# dynamic_quiz
- A quiz website that randomly selects 5 questions out of a 25-question pool and dynamically generates the content and score at the end.
+# 📝 Dynamic Quiz  
+
+## 🌐 Live Demo  
+🔗 **[Try it here](https://your-deployed-link.com)**  
+
+---
+
+- Randomly selects **5 questions** out of a **25-question pool**  
+- Dynamically generates questions and answer options on the page  
+- Displays the **score** at the end of the quiz  
+- Includes a **timer** ⏳ that auto-submits when time is up  
+---
+
+## 🛠️ Tech Stack  
+- **HTML5**  
+- **CSS3**  
+- **JavaScript (Vanilla)**  
