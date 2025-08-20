@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>GK Quiz</title>
+    <title>Cricket Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 30px;
             background-color: #f9f9f9;
-        }
-        h1 {
-            text-align: center;
         }
         .quiz {
             max-width: 600px;
@@ -27,7 +24,7 @@
         .question h3 {
             margin-bottom: 10px;
         }
-        label { /* Important */
+        label {
             display: block;
             margin-bottom: 5px;
         }
@@ -52,12 +49,22 @@
             font-weight: bold;
             color: #333;
         }
+        .header {
+            max-width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     <div class="quiz">
-        <h1>GK Quiz</h1>
-
+        <div class="header">
+            <h1>GK Quiz</h1>
+            <div id="timer" style="font-size: 20px; color: red; font-weight: bold;"></div>
+        </div>
+        
         <form id="quizForm">
             <!-- Questions will be inserted here by JavaScript -->
             <button type="submit">Submit</button>
