@@ -173,7 +173,13 @@ selectedQuestions.forEach((q, index) => {
 let timeLeft = 20;
 const timerElement = document.getElementById("timer");
 
+let minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
+timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
 const timerInterval = setInterval(() => {
+    timeLeft--;
+
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
     timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
@@ -184,8 +190,8 @@ const timerInterval = setInterval(() => {
         document.getElementById("quizForm").requestSubmit();
         lockQuiz();
     }
-    timeLeft--;
 }, 1000);
+
 
 
 
