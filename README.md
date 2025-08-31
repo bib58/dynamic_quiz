@@ -2,7 +2,11 @@
 
 ✨ An interactive and fun quiz app with dynamic questions & real-time feedback.
 
-<div align="center"> <a href="https://bib58.github.io/dynamic_quiz/" target="_blank"> <img src="https://img.shields.io/badge/🌐 Live Demo-FF6F61?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Demo"/> </a> </div>
+<p align="center">
+  <a href="https://bib58.github.io/dynamic_quiz/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐 Live&nbsp;Demo-ff6f61?style=for-the-badge&logo=rocket&logoColor=white&labelColor=9b8cff" alt="Live Demo"/>
+  </a>
+</p>
 
 ---
 
