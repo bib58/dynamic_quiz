@@ -1,7 +1,7 @@
 # 📝 Dynamic Quiz  
 
-## 🌐 Live Demo  
-🔗 **[Try it here](https://bib58.github.io/dynamic_quiz/)**  
+   
+##🔗 **[🌐 Live Demo](https://bib58.github.io/dynamic_quiz/)**  
 
 ---
 
